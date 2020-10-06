@@ -20,7 +20,7 @@ env:
 sudo: required
 
 before_install:
-    - if [ "$TRAVIS_ARCH" = ppc64le ]; then sudo snap install cmake --beta --classic; export PATH=/snap/bin:$PATH; fi
+    - if [ "$TRAVIS_ARCH" = ppc64le ]; then sudo apt-get install snapd; sudo snap install cmake --beta --classic; export PATH=/snap/bin:$PATH; fi
     - if [ "$TRAVIS_ARCH" = amd64 ]; then sudo apt update; sudo apt install cmake3; fi
     - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 90
     - if [ "$QT_BASE" = "52" ]; then sudo add-apt-repository ppa:beineri/opt-qt521-trusty -y; fi
