@@ -20,6 +20,7 @@ env:
 sudo: required
 
 before_install:
+    - if [ "$TRAVIS_ARCH" = amd64 ]; then sudo snap install cmake --beta --classic; export PATH=/snap/bin:$PATH; fi
     - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 90
     - if [ "$QT_BASE" = "52" ]; then sudo add-apt-repository ppa:beineri/opt-qt521-trusty -y; fi
     - if [ "$QT_BASE" = "53" ]; then sudo add-apt-repository ppa:beineri/opt-qt532-trusty -y; fi
@@ -58,4 +59,4 @@ addons:
             - libboost-dev
             - gcc-5
             - g++-5
-            - cmake3
+            - if [ "$TRAVIS_ARCH" = amd64 ]; then cmake3; fi
